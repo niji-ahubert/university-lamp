@@ -29,13 +29,14 @@ Installation
 ### Clone the project
 
 ```bash
-git clone git@github.com:ahubert-univ/symfony-lamp.git
+git clone git@github.com:niji-ahubert/symfony-lamp.git
 ```
 
-If you are not on socle-symfony-build branch
+If you are not on develop branch
 ```bash
-git checkout socle-symfony-build
+git checkout develop
 ```
+
 ### Make help
 ```bash
 make
@@ -57,14 +58,10 @@ make bash
 ```
 
 ### URL Website
+> **Warning**
+> You must accept error certificate to access https://myapp.localhost and https://phpma.localhost 
+> 
 | URL      |  Service   | 
 |----------|:----------:|
 | https://phpma.localhost | PhpMyAdmin |
 | https://myapp.localhost |  Website   |
-
-| :bowtie: `:bowtie:` | :smile: `:smile:` | :laughing: `:laughing:` |
-
-> **Warning**
-> This is a warning
->
-> **Check** :kissing_closed_eyes:
