@@ -2,6 +2,7 @@ version: "3.4"
 
 services:
   php:
+    image: symfony:dev
     build:
       context: .
       target: app_php_dev
@@ -11,7 +12,7 @@ services:
     restart: unless-stopped
     volumes:
       - php_socket:/var/run/php
-      - ./:/srv/app
+      - ./my-app:/srv/app
       - ./docker/php/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
     healthcheck:
       interval: 10s
@@ -26,6 +27,7 @@ services:
       XDEBUG_MODE: "${XDEBUG_MODE:-off}"
       DATABASE_URL: mysql://user:nopassword@mysql/my-bdd
   caddy:
+    image: caddy:dev
     build:
       context: .
       target: app_caddy
@@ -36,7 +38,7 @@ services:
       - php_socket:/var/run/php
       - caddy_data:/data
       - caddy_config:/config
-      - ./public:/srv/app/public:ro
+      - ./my-app/public:/srv/app/public:ro
       - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
     ports:
       # HTTP
