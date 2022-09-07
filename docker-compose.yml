@@ -3,12 +3,6 @@ version: "3.4"
 services:
   php:
     image: ahubertledorze/symfony-lamp:dev
-    build:
-      context: .
-      target: app_php_dev
-      args:
-        SYMFONY_VERSION: ${SYMFONY_VERSION:-}
-        STABILITY: ${STABILITY:-stable}
     restart: unless-stopped
     volumes:
       - php_socket:/var/run/php
@@ -28,9 +22,6 @@ services:
       DATABASE_URL: mysql://user:nopassword@mysql/my-bdd
   caddy:
     image: ahubertledorze/caddy-lamp:dev
-    build:
-      context: .
-      target: app_caddy
     depends_on:
       - php
     restart: unless-stopped
