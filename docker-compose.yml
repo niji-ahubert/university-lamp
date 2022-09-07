@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   php:
-    image: symfony:dev
+    image: ahubertledorze/symfony-lamp:dev
     build:
       context: .
       target: app_php_dev
@@ -27,7 +27,7 @@ services:
       XDEBUG_MODE: "${XDEBUG_MODE:-off}"
       DATABASE_URL: mysql://user:nopassword@mysql/my-bdd
   caddy:
-    image: caddy:dev
+    image: ahubertledorze/caddy-lamp:dev
     build:
       context: .
       target: app_caddy
