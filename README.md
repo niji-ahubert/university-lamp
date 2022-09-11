@@ -41,6 +41,10 @@ git checkout develop
 ```bash
 make
 ```
+```bash
+Initialize project
+make setup
+```
 
 ```bash
 Start project

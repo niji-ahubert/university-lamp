@@ -3,7 +3,7 @@ version: "3.4"
 services:
   php:
     image: ahubertledorze/symfony-lamp:dev
-    restart: unless-stopped
+    restart: on-failure
     volumes:
       - php_socket:/var/run/php
       - ./my-app:/srv/app
@@ -75,7 +75,7 @@ services:
   dnsmasq:
     container_name: dnsmasq
     image: andyshinn/dnsmasq
-    restart: unless-stopped
+    restart: on-failure
     command: -A /.local/127.0.0.1
     ports:
       - "127.0.0.1:53:53/udp"

@@ -4,6 +4,5 @@
 /.env.local
 /.env.local.php
 /.env.*.local
-!my-app/public/index.php
 /my-app
 ###< symfony/framework-bundle ###
