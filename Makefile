@@ -19,6 +19,10 @@ init:  ## Clone the Git repository of the middleware
 		mkdir my-app; \
 	fi
 
+permission:
+	sudo chown -R $$USER:$$GROUP my-app; \
+    sudo chmod -R 775 my-app;
+
 setup: init start  ## initialize project
 
 start: ## Start the docker hub in detached mode (no logs)

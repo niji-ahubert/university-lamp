@@ -64,8 +64,15 @@ make bash
 ### URL Website
 > **Warning**
 > You must accept error certificate to access https://myapp.localhost and https://phpma.localhost 
-> 
+ 
 | URL      |  Service   | 
 |----------|:----------:|
 | https://phpma.localhost | PhpMyAdmin |
 | https://myapp.localhost |  Website   |
+
+> **Warning**
+> After installation you must fix permission
+```bash
+Fix permission
+make permission
+```
