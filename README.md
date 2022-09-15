@@ -29,7 +29,7 @@ Installation
 ### Clone the project
 
 ```bash
-git clone git@github.com:niji-ahubert/symfony-lamp.git
+git clone git@github.com:niji-ahubert/university-lamp.git
 ```
 
 If you are not on develop branch
