@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   php:
-    image: ahubertledorze/symfony-lamp:dev
+    image: ahubertledorze/lamp:dev
     restart: on-failure
     volumes:
       - php_socket:/var/run/php
