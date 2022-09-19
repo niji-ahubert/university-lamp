@@ -3,7 +3,7 @@ version: "3.4"
 services:
   php:
     image: ahubertledorze/lamp:dev
-    restart: on-failure
+    restart: unless-stopped
     volumes:
       - php_socket:/var/run/php
       - ./my-app:/srv/app
@@ -21,7 +21,7 @@ services:
       XDEBUG_MODE: "${XDEBUG_MODE:-off}"
       DATABASE_URL: mysql://user:nopassword@mysql/my-bdd
   caddy:
-    image: ahubertledorze/caddy-lamp:dev
+    image: ahubertledorze/caddy-lamp:dev-2
     depends_on:
       - php
     restart: unless-stopped

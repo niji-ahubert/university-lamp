@@ -81,10 +81,12 @@ RUN chmod +x /usr/local/bin/docker-healthcheck
 
 HEALTHCHECK --interval=10s --timeout=3s --retries=3 CMD ["docker-healthcheck"]
 
-COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
-RUN chmod +x /usr/local/bin/docker-entrypoint
+RUN rm $PHP_INI_DIR/conf.d/app.prod.ini; \
+	mv "$PHP_INI_DIR/php.ini" "$PHP_INI_DIR/php.ini-production"; \
+	mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
-ENTRYPOINT ["docker-entrypoint"]
+COPY docker/php/conf.d/app.dev.ini $PHP_INI_DIR/conf.d/
+
 CMD ["php-fpm"]
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
@@ -95,9 +97,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # copy sources
 RUN rm -Rf docker/
-
-
-
+RUN mkdir -p /srv/app/public
 
 
 # Caddy image
