@@ -27,6 +27,8 @@ setup: init start  ## initialize project
 
 start: ## Start the docker hub in detached mode (no logs)
 	@$(DOCKER_COMP) up --detach
+	sudo chown -R ${USER}:${USER} my-app
+	sudo chmod -R 775 my-app
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down --remove-orphans

@@ -4,5 +4,5 @@
 /.env.local
 /.env.local.php
 /.env.*.local
-/my-app
+/my-app*
 ###< symfony/framework-bundle ###
