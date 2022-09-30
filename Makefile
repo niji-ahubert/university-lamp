@@ -1,5 +1,5 @@
 DOCKER_COMP = docker-compose
-PHP_CONT = $(DOCKER_COMP) exec -u root
+PHP_CONT = $(DOCKER_COMP) exec -u 1000
 
 # Misc
 .DEFAULT_GOAL = help
@@ -20,7 +20,7 @@ init:  ## Clone the Git repository of the middleware
 	fi
 
 permission:
-	sudo chown -R $$USER:$$GROUP my-app; \
+	sudo chown -R ${USER}:${USER} my-app; \
     sudo chmod -R 775 my-app;
 
 setup: init start  ## initialize project
