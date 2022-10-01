@@ -3,7 +3,7 @@ PHP_CONT = $(DOCKER_COMP) exec -u 1000
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        = help setup start down bash
+.PHONY        = help setup start down bash logs
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help:
@@ -35,3 +35,6 @@ down: ## Stop the docker hub
 
 bash: ## Connect to the PHP FPM container
 	@$(PHP_CONT) php bash
+
+logs: ## logs php container
+	@$(DOCKER_COMP) logs   php --tail=0 --follow
