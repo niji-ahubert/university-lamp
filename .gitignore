@@ -6,4 +6,6 @@
 /.env.*.local
 !my-app/public/index.php
 /my-app
+/my-app-cours
+/my-app-keep
 ###< symfony/framework-bundle ###
