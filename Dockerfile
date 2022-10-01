@@ -91,6 +91,8 @@ CMD ["php-fpm"]
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.alpine.sh' | bash
+RUN apk add symfony-cli
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # prevent the reinstallation of vendors at every changes in the source code
