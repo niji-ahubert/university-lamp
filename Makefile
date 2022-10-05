@@ -21,6 +21,7 @@ init:  ## Clone the Git repository of the middleware
 
 permission:
 	@$(DOCKER_COMP) exec -u root php bash -c 'chown -R 1000:1000 .'
+    @$(DOCKER_COMP) exec -u root php bash -c 'chmod -R 775 .'
 
 setup: init start  ## initialize project
 
