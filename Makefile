@@ -20,24 +20,20 @@ init:  ## Clone the Git repository of the middleware
 	fi
 
 permission:
-	@$(DOCKER_COMP) exec -u root php bash -c 'chown -R 1000:1000 .'
-    @$(DOCKER_COMP) exec -u root php bash -c 'chmod -R 775 .'
+	@$(DOCKER_COMP) exec -u root php chown -R 1000:1000 .
 
 setup: init start  ## initialize project
 
 start: ## Start the docker hub in detached mode (no logs)
 	@$(DOCKER_COMP) up --detach
-	@$(DOCKER_COMP) exec -u root php bash -c 'chown -R 1000:1000 .'
-	@$(DOCKER_COMP) exec -u root php bash -c 'chmod -R 775 .'
+	sudo chown -R ${USER}:${USER} my-app
+	sudo chmod -R 775 my-app
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down --remove-orphans
 
 bash: ## Connect to the PHP FPM container
-	@$(DOCKER_COMP) exec -u 1000 php bash
+	@$(PHP_CONT) php bash
 
 bash_root: ## Connect to the PHP FPM container
 	@$(DOCKER_COMP) exec -u root php bash
-
-logs: ## logs php container
-	@$(DOCKER_COMP) logs   php --tail=0 --follow
