@@ -37,3 +37,6 @@ bash: ## Connect to the PHP FPM container
 
 bash_root: ## Connect to the PHP FPM container
 	@$(DOCKER_COMP) exec -u root php bash
+
+logs: ## Show live logs
+	@$(DOCKER_COMP) logs --tail=0 --follow
