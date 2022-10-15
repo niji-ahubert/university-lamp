@@ -21,13 +21,13 @@ init:  ## Clone the Git repository of the middleware
 
 permission:
 	@$(DOCKER_COMP) exec -u root php chown -R 1000:1000 .
+	@$(DOCKER_COMP) exec -u root php setfacl -dR -m u:www-data:rwX -m u:1000:rwX /srv/app
+	@$(DOCKER_COMP) exec -u root php setfacl -R -m u:www-data:rwX -m u:1000:rwX /srv/app
 
 setup: init start  ## initialize project
 
 start: ## Start the docker hub in detached mode (no logs)
 	@$(DOCKER_COMP) up --detach
-	sudo chown -R ${USER}:${USER} my-app
-	sudo chmod -R 775 my-app
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down --remove-orphans
